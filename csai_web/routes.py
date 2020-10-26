@@ -7,4 +7,4 @@ from csai_web.middleware import login_required
 
 @app.route("/yo")
 def catch():
-    return "Hello Pranay!"
+    return render_template('home.html')

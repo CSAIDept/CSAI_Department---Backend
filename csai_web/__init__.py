@@ -17,3 +17,5 @@ limiter = Limiter(
 )
 
 db = SQLAlchemy(app)
+
+from csai_web import routes, auth_routes
