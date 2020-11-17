@@ -7,14 +7,15 @@ from csai_web.middleware import login_required
 @app.route('/csaiweb/backend/auth', methods=["POST"])
 def login():
     content = request.get_json()
-    username = content["username"]
+    name = content["name"]
     email = content["email"]
+
 
     user = Login.query.filter(Login.email == email).first()
 
     if user is None:
-        user_in = Login(username=username, email=email)
-        db.session.add(user_in)
+        _in = Login(name=name, email=email)
+        db.session.add(_in)
         db.session.commit()
 
     token = encode_auth_token(email)
@@ -37,7 +38,7 @@ def decode_email():
         List = []
         
         dict = {
-            'username': res.username,
+            'name': res.name,
             'email': res.email
         }
         List.append(dict)
